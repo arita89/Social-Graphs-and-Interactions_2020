@@ -1,0 +1,45 @@
+/* Disables the ugly frame arroung <iframe>'s */
+iframe {
+   border-width: 0px;
+}
+
+#topnavbar {
+    background-color: #e3f2fd;
+}
+
+.navbar {
+    transition: top 0.5s ease;
+}
+.navbar-hide {
+    top: -100px;
+}
+
+a:hover {
+    color: blue;
+}
+
+
+
+figure {
+  display: inline-block;
+  text-align: center
+}
+
+
+
+/* Make carousel controls visible, by reversing the color */
+
+    /* https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-carousel */
+    .carousel-control-next,
+    .carousel-control-prev,
+    .carousel-indicators {
+        filter: invert(100%);
+    }
+
+    /* https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-carousel */
+    x.carousel-control-prev-icon {
+     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
+    x.carousel-control-next-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }

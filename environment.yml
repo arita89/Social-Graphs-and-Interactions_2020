@@ -1,0 +1,11 @@
+name: looney_graphs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - codecov
+  - spotipy
+  - python-louvain
+variables:
+  VAR1: valueA

@@ -1,0 +1,1059 @@
+<html>
+
+<head>
+    <title>Mapping the The Music Galaxy</title>
+    <link rel="stylesheet" href="./lib/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./scripts.js"></script>
+</head>
+
+<body>
+<a id="top"></a>
+
+<!-- NavBar Begin -->
+<nav id="topnavbar" class="navbar navbar-expand-lg   __fixed-top sticky-top navbar-light _bg-light">
+
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        The Music Galaxy
+    </a>
+
+    <div class="collapse navbar-collapse w-100 order-0 order-md-0 multi-collapse2" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="network.html">The Network</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="communities-and-nlp.html">Communities & NLP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="example.html">An Artist Example</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+<!-- NavBar End -->
+
+
+
+
+<div class="container">
+    <div class="text-right">
+      Explainer Notebook: <a href="./explainer.ipynb">Jupyter</a>/<a href="./explainer.html">HTML</a> - <a href="https://github.com/santisantis/Social-Graphs-and-Interactions_2020">Source Code</a>
+    </div>
+  <!-- Content Begin -->
+
+  <a id="basics"></a>
+
+
+
+
+  <a id="the-network"></a>
+  <div>
+    <h1 class="display-4" style="margin-top: 1em; margin-bottom: 1ex;">The bipartite social network</h1>
+
+    <p>
+      The network graph consists of 40974 nodes and 95691 edges.
+      The graph is bipartite with 12053 artist nodes on one side, and and 28922 songs nodes on the other.
+      Because the graph is bipartite, edges only connect across sides between artists and songs.
+      As such, an edge represent an artist's participation in a song, or some kind of contribution.
+    </p>
+    <p>
+      By using projections of each side - the artist side and the song side - the indirect relations between artists respectively the songs are revealed.
+      Essentially, whenever two artist are related to the same song, these two relations are reduced into an edge between the two artists.
+      And likewise with the songs side; songs with artists in common are connected.
+      The end result is two new graphs with a lot more edges/relations than the original graph; one describing co-working relationships between artist, and the other describing how songs relate to each other through the artists who contributed to the song.
+    </p>
+    <p>
+        The graphs can be visualized via different algorithms. Below ForceAtlas2 is used for positioning the nodes. Whenever possible, these positions are used across visualizations to improve comparability.
+    </p>
+  </div>
+
+
+
+
+  <a id="artists-projection"></a>
+  <div>
+    <h3 class="">The artists projection</h3>
+    <p>
+      The artists projection consists of the 12053 artist nodes, and 109004 relation/edges.
+    </p>
+    <p>
+      When visualized like this, the artists are grouped together based on the songs they made together.
+    </p>
+    <img src="plots/basic/graph-artists-unspecified.100dpi.png" class="img-fluid w-100" alt="">
+    <p>
+      Not surprisingly, artists tend to group together.
+      Groups located close to each other would to some degree have song relations in common.
+      This could be both the same songs performed by different artists, but also some of the artists taking part in such songs.
+      Artists located between groups would typically have relations to multiple such groups.
+      This could be for instance producers, writers, supporting artists and technicians.
+    </p>
+  </div>
+
+
+
+
+  <a id="songs-projection"></a>
+  <div>
+    <h3 class="mt-0">The songs projection</h3>
+    <p>
+      The other side of that bipartite graph, the songs projection, consists of the 28922 songs nodes and 1478291 relations (edges)
+    </p>
+    <img src="plots/basic/graph-songs-all.100dpi.png" class="img-fluid w-100" alt="">
+    <p>
+      Based on the visualization, most songs seem to have enough relations to other songs (via the participating artists) to be pulled towards the center of the 'galaxy'.
+      This indicates widespread connectivity to the same communities of artists.
+    </p>
+    <p>
+      The songs distant from the center on the other hand have little connection to such large interconnected communities.
+      They might, however, be part of groups of artists not included in the graph. As such, the may in reality be well-connected, but in the scope of this graph, they are not.
+    </p>
+  </div>
+
+
+ <hr>
+
+  <a id="roles"></a>
+  <div>
+    <h3>Different roles of the artists</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>
+          Naturally, there are many artists involved in the production of songs, and different artists play very different roles.
+          There are of course the featured performers, the producers and the writes, but there are in fact, a lot more artists/people involved in a song than these.
+          Don't forget artists such musicians, the supporting singers, and even the technicians involved.
+        </p>
+        <p>
+          NB. The primary artists are here shown as a separate group.
+          They are, however, also part of the featured artists group, and is only included here to display their proportion the the featured artists.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/basic/roles.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+    <p>
+      By visualizing each role independently (with primary artists now being visualized as a special kind of artist in the performer category), it is clearly visible how the different roles are represented all over the whole network.
+    </p>
+
+    <div id="carouselArtists" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtists" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtists" data-slide-to="1"></li>
+        <li data-target="#carouselArtists" data-slide-to="2"></li>
+        <li data-target="#carouselArtists" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/basic/graph-artists-performer.100dpi.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/graph-artists-producer.100dpi.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/graph-artists-writer.100dpi.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/graph-artists-custom.100dpi.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtists" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtists" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+
+
+
+  <a id="multiple-roles"></a>
+  <div>
+    <h4>Multiple roles of some artists</h4>
+    <div class="row">
+      <div class="col-4">
+        <p>
+          It turns out though, that the same artist can of course have multiple roles.
+          In fact, this is not an unseen phenomena within even the few role categories used.
+          The role 'custom' further include a large subset of other here unspecified roles - of which an artist can have many.
+        </p>
+      </div>
+
+      <div class="col-8">
+        <div id="carouselRoles" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselRoles" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselRoles" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="plots/basic/roles-multiple.100dpi.png" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-dark">
+                <h5></h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="plots/basic/roles-multiple-stacked.100dpi.png" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-dark">
+                <h5></h5>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselRoles" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselRoles" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <p>
+      Such artists with multiple roles prevent merging the above visualizations without some adaptations.
+      By giving some roles preference over other roles (the less represented roles over the more represented), it is however, possible to give an rough impression of how artists of different roles relate to each other.
+    </p>
+
+    <img src="plots/basic/graph-artists-all.100dpi.png" class="img-fluid w-100" alt="">
+
+    <p>
+      The different roles do indeed seem to mingle all over the music galaxy.
+      However, it turns out that the featured artists seem to have a tendency to mingle at one corner, while the writers mingle more on the other side.
+      While this is indeed in line with the individual plots above, this apparent pattern is heavily affected by group of artists also being writers.
+      One reason for this group of featured and more closely related artist could be a kind that tend to collaborative mindset.
+      For instance smaller artists, that is only secondary 'featured' artists on the some a few songs.
+    </p>
+    <p>
+      While this was also visible on the individual plots, the combined plot clearly show how the isolated groups is in fact a group of custom performance artists that relates to a central artist.
+      This would imply that these custom performance artists only co-work with this particular artist.
+      These groups are then connected via a handful of other artists somewhere in between the group and the central cloud.
+    </p>
+    <p>
+      All these observations does however only relate to the presence of the artists, and how they relate to each other, but not at all their penetration on the market.
+    </p>
+  </div>
+
+
+
+  <hr>
+
+  <a if="size-matters"></a>
+  <div>
+    <h2>Artist degree</h2>
+    <p>
+      In a social network, the mere presence in the music industry naturally is typically not that relevant, if an artist in reality only have a few connections.
+    </p>
+    <p>
+      Via the bipartite graph it is easily identified how many relations artist has rained thought participation in songs.
+      This is simply done by calculating the degrees of the actor's node in the original bipartite graph.
+    </p>
+    <div class="row">
+      <div class="col-5">
+        <p>
+          The primary artists (those used to bootstrap the network) ar much better connected that any of the other roles.
+          They are, however, also part of the the performer group. Hence the other featured artists is apparently not that well connected.
+        </p>
+        <p>
+          As one could expect, producers also have a handfull of connections. The writers and the custom performance artists draws the shortest straw, generally not having that many relations.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/basic/artist-degrees-bipartite-boxplot.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+
+    <div id="carouselArtistDegreeOnSongs" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtistDegreeOnSongs" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtistDegreeOnSongs" data-slide-to="1"></li>
+        <li data-target="#carouselArtistDegreeOnSongs" data-slide-to="2"></li>
+        <li data-target="#carouselArtistDegreeOnSongs" data-slide-to="3"></li>
+        <li data-target="#carouselArtistDegreeOnSongs" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/basic/degrees-bipartite/graph-artists-all.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>All artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/degrees-bipartite/graph-artists-performer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/degrees-bipartite/graph-artists-producer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/degrees-bipartite/graph-artists-writer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/basic/degrees-bipartite/graph-artists-custom.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtistDegreeOnSongs" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtistDegreeOnSongs" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <p>
+      From the visualizations above, it is clear that there is a tendency towards the 'primary' artists being related to more artists that many of the other performing artists.
+    </p>
+    <p>
+      Aside from the 'primary' artists, other featured artists vary from having very few connection sto being as well represented as the primary artists.
+      Likewise, the remaining the three role categories show a tendency to have some artists with a varying number of relations.
+      When comparing the different individual roles, some of the artists with multiple roles are clearly noticeable across the visualizations.
+    </p>
+
+
+    <h5>The top 15 connected artists</h5>
+    <p>
+      When comparing the actual artist from each role category, there are obvious differences, but also somewhat unexpected repetition across the roles.
+      As for the custom performance role, this is a mix of all bonbons, which could explain the number of repeats from other categories:
+      The three primary categories could simply also be represented within the custom performance category due to a record that matches the function of these very roles.
+      Nonetheless, there seem to be a tendency of performing artists to also act as also producers, writers and other unspecified roles.
+    </p>
+
+
+    <div class="row">
+      <div class="col-10 offset-1">
+
+        <div id="dataframe-artist-clustering">PLACEHOLDER FOR DATAFRAME</div>
+        <script>
+            load_dataframe_into("./tables/basic/artist-degrees-on-songs-10-names.html", "dataframe-artist-clustering")
+        </script>
+        <div>
+            <small><a class="float-right" href="./tables/basic/artist-degrees-on-songs-100.html" target="_blank">See top 100 artists (with values)</a></small>
+        </div>
+
+      </div>
+    </div>
+
+    <p>
+      Apparently, Neil Young, Lou Reed and Josh Homme top all the role types.
+    </p>
+    <p>
+      After these two artists Greg Calbi and James Brown comes in on a shared 4th place when comparing the individual role. Interestingly, in the combined list of all artists Greg Calbi who is apparently only registered in the custom performances category is ranked higher that James Brown. Apparently, according to Wikipedia, Greg Calib is a Grammy award-winning mastering engineer, and it therefore makes sense that we would takes part in may songs even though he is neither a featured performer, producer nor writer. Below these artists there a clearly a lot of overlaps with artists having multiple roles.
+    </p>
+    <p>
+      One 'artist' in particular should be noticed: 'Traditional' is a fictive artist - a container for various traditional songs without know writer. This 'artist' is ranked as the #13'th writer and #14'th custom performance artist, but in the combines rank 'Traditional' is only ranked #15'th. This could imply that some of the featured performers or produces were ranked a bit higher. However, when comparing the actual values, it turns out that 'Traditional' and Howie Weinberg simple just have been involved in the same number of songs.
+    </p>
+    <p>
+      Now, the question on everyone's lips is of course where in the music galaxy these artists is located, and the answer to this question is easily answered.
+    </p>
+
+    <img src="plots/basic/degrees-bipartite/graph-artists-labeled.100dpi.png" class="img-fluid w-100" alt="">
+<!--
+    <p>
+      On the plots below the previous visualizations is now adapted to illustrate degree (against the song side of the original bipartite graph) through node size.
+    </p>
+    <p>
+      On the performer slot the primary artists is of cause all large. This is due the the method of data retrieval. however, across all performing artists, it is obvious that there a lot of smaller artists in the network. Also, some of these tend to be located together in a region of the graph where there are fewer larger and primary artists. This observation could relate to a group of artists doign more collaborative work with different smaller artists.
+    </p>
+    <p>
+      On the producers and writers plot there there are more smaller artists spread around, especially in between the larger artists. As for the writers this could of cause be due to the larger artists performing songs written by different writers.
+    </p>
+    <p>
+      A lot of the small custom performance artists seem to mingle together in smaller groups. This would of cause indicate that they are primarily related to the near by larger artists.
+    </p>
+    <p>
+      Finally, most of the top 10 artists are either located in or close to the center of the graph, but there are a few exceptions. These connect to some of the more or less distant groups of artists.
+    </p>
+-->
+  </div>
+
+  <hr>
+
+
+
+
+
+
+
+
+
+  <a id="shortest-paths"></a>
+  <div>
+    <h2>Shortest Paths</h2>
+    <div class="row">
+
+      <div class="col-4">
+        <p>
+          Even though the network consists of 12.052 artists, they are so tightly connected, that there is at worst 9 connections between two artists.
+          However, as shown on the histogram, this is much longer that even the worst average shortest path of any artist.
+          I fact, aside for a very small group of artist, the norm is average path lengths between 3.5 and 5.5.
+          The average average path length is 4.2, and to most typical length is 4.0.
+        </p>
+      </div>
+
+      <div class="col-8">
+        <img src="plots/basic/artists-shortest-path-histogram.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+
+    </div>
+        <p>
+          This is of cause connections though songs through the year.
+          Therefore, some connections would in reality not be that effective due to natural causes, but this does not matter that much when browsing the music albums, shouting for unknown artists.
+        </p>
+  </div>
+
+
+  <hr>
+
+  <a id="degree-centrality"></a>
+  <div>
+    <h2>Artist degree centrality</h2>
+    <p>
+      Within the artist projection, the node degree describe how many artists an artist has collaborated with.
+      Such collaborations includes even the established relations between the featured artists and technical staff such as audio mechanics.
+    </p>
+    <p>
+      As expected, the degree of artists vary a lot.
+      However, due to the positioning provided via the ForceAtlas2 algorithm, especially two patterns is noticeable.
+      First, there seem to be some grouping going on between a handful of artist with with high degree.
+      Also, a small group of nodes with high degree seem to act as bridges between isolated groups and the main cloud of artists.
+    </p>
+    <img src="plots/artist/degree/graph-artists-unspecified.100dpi.png" class="img-fluid w-100" alt="">
+
+    <p>
+      Examination of the different roles, show that the primary artists (the ones used to bootstrap the network) have a higher average degree, which is kind of expected.
+      These primary artists are, however, merged into the role category 'performer', together with other featured artists.
+      The performing artists as a whole (including the primary ones) are actually not that well-connected as could have been initially assumed.
+      These other performing artists are not described in the boxplot, but it is clear when there is such a big difference between the two described roles, these other performing artists must be much less connected than the 'primary' artists.
+      This is also visible below on the plot showing only the performing artists: There are a lot om small red dots - especially in one region of music galaxy.
+    </p>
+    <div class="row">
+      <div class="col-5">
+        <p>
+          Compared to the whole network, the producers that have more relations to other artists than the average artist.
+          But this is actually as expected, since many artists use the same producers and some artist fabricate lyrics for performing artists for a living.
+        </p>
+        <p>
+          Writers stand out as the role that is less connected on average.
+        </p>
+        <p>
+          In every category there are many outliers: These are the most popular artists.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/artist/degree/boxplot.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+    <div id="carouselArtistsDegrees" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtistsDegrees" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtistsDegrees" data-slide-to="1"></li>
+        <li data-target="#carouselArtistsDegrees" data-slide-to="2"></li>
+        <li data-target="#carouselArtistsDegrees" data-slide-to="3"></li>
+        <li data-target="#carouselArtistsDegrees" data-slide-to="4"></li>
+        <li data-target="#carouselArtistsDegrees" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/artist/degree/graph-artists-all.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>All artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/degree/graph-artists-performer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/degree/graph-artists-producer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/degree/graph-artists-writer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/degree/graph-artists-custom.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/degree/graph-artists-labeled.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Top artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtistsDegrees" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtistsDegrees" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <p>
+      The role type of the previously mentioned artists that connect the almost isolated groups apparently varies, and there is no clear pattern.
+    <p>
+
+    <p>
+      As with the number of song relations per artist (the artist's degree in the full bipartite graph), there is some repetition between the role categories, but also noticeable differences.
+    </p>
+
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div id="dataframe-artist-degrees">PLACEHOLDER FOR DATAFRAME</div>
+        <script>
+            load_dataframe_into("./tables/artist/degrees-10-names.html", "dataframe-artist-degrees")
+        </script>
+        <div>
+            <small><a class="float-right" href="./tables/artist/degrees-100.html" target="_blank">See top 100 artists (with coefficient values)</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <p>
+        We all know about Paul McCartney, but how is this custom performance artist: Greg Calbi.
+      </p>
+      <p>
+        From his Wiki page:
+        <blockquote class="blockquote" style="margin-left: 5ex; font-size: 85%;">
+          <p class="mb-0">
+            Gregory Calbi (born April 3, 1949) is a Grammy Award-winning American mastering engineer at Sterling Sound, New Jersey, United States. (...)
+            In his first year as a mastering engineer, Calbi mastered his first platinum record, Eric Carmen by Eric Carmen, John Lennon's Walls and Bridges and in 1975, Calbi mastered David Bowie's Young Americans and Bruce Springsteen's Born to Run.
+            Calbi worked at the Record Plant until 1976 when a position was offered to him by Lee Hulko, owner of Sterling Sound.
+          </p>
+        </blockquote>
+      </p>
+      <p>
+        Greg Balbi is apparently not only the custom performance artist tho has relations to most songs.
+        He is also the best connected custom artist.
+        In fact, he has even more connections than Paul McCartney, who is otherwise the most connected artist.
+      </p>
+      <p>
+        The container artist 'Traditional' is now the second best connected writer, and even the thirst best 'artist' altogether.
+        Considering the nature of this 'artist', the are apparently a lot of artists who perform interpretations of lyrics without a known author.
+      </p>
+      <p>
+        One peculiar thing, though, is that the custom performance role and the combined role of all artists are identical.
+        This might relate to the diversity of the custom performance role, which might include also references to also the other role categories.
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+
+<!--
+
+    <h4>Degree distribution</h4>
+    <div class="row">
+      <div class="col-4">
+      <h5>THIS I _MY_ old website text (there is something else in the explainer)</h5>
+        <p>
+          The distribution of the artists by degree show that the projection follows the powerlaw, like small-world networks.
+          This is was expected, since the graphs describes a social network.
+        </p>
+        <p>
+          Likewise, the degree distribution of the individual roles also follow this patter, although not as clearly, since a smaller number of artists than ideally expected have a low degree.
+          This might, however be a circumstance of the data retrieval method used.
+        <p>
+        </p>
+          One role category that stands out is the primary artists.
+          This category is a special case, since it is also included in the performing artist category.
+          The fact that the primary artists that serves as a bootstrap for the data retrieval could indicate that there is some bias related to either the retrieval method or the selection method.
+          This could perhaps relate to the fact that only the first 100 songs returned (in alphabetical order) from the API of genius was used.
+          The primary artists originate from a playlist Spotify with claiming to include the greatest 1001 tracks of all time, and this playlist is naturally affected by the authors preferences.
+          In the end, we do not have clear idea of this phenomenon, however, since the primary artists was only used as a bootstrap, and the resulting set of performing artists is acceptable, we accept the peculiar situation without further explanation.
+        </p>
+      </div>
+      <div class="col-8">
+        <img src="plots/artist/degree/degree-distribution-combined-normal.100dpi.png" class="img-fluid w-100" alt="">
+        <img src="plots/artist/degree/degree-distribution-combined-loglog.100dpi.png" class="img-fluid w-100" alt="">
+        <img src="plots/artist/degree/degree-distribution-segmented-normal.100dpi.png" class="img-fluid w-100" alt="">
+        <img src="plots/artist/degree/degree-distribution-segmented-loglog.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+-->
+
+
+
+
+
+
+
+  <hr>
+
+
+  <a id="betweenness-centrality"></a>
+  <div>
+    <h2>Artist betweenness centrality</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>
+          While the artist degree centrality measures the artist's centrality by only its neighbors,
+          betweenness centrality describes how many shortest pats between all artists that pass through an artist.
+          The artists most central artists is then the ones that must paths pass through.
+        </p>
+        <p>
+          Compared with degree centrality much fewer artists have high centrality.
+          In fact, now only a handful of artist can be said to be considered truly central - large hubs - in the network.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/artist/betweenness-centrality/boxplot.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+    <p>
+      The primary artists mostly, with all featured performers (which still includes the primary performers) and producers following, are the ones who influence the flow around the network.
+      However, there a lot of outliners across all categories. Those artists would be the actual people you would want to know, if you want to get a foot inside the network. For a music enthusiast such artists would, however, possibly just be the big influencers, and someone you would expect everyone to have heard about.
+    </p>
+
+    <div id="carouselArtistsBetweennessCentrality" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="1"></li>
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="2"></li>
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="3"></li>
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="4"></li>
+        <li data-target="#carouselArtistsBetweennessCentrality" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/artist/betweenness-centrality/graph-artists-all.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>All artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/betweenness-centrality/graph-artists-performer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/betweenness-centrality/graph-artists-producer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/betweenness-centrality/graph-artists-writer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/betweenness-centrality/graph-artists-custom.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/betweenness-centrality/graph-artists-labeled.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Top artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtistsBetweennessCentrality" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtistsBetweennessCentrality" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <p>
+      The plots of the individual roles clearly show how especially the outliers have a huge betweenness centrality.
+    </p>
+    <p>
+      Have you already guess who they are? - or did you take a peek at the table already?
+    </p>
+
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div id="dataframe-artist-betweenness-centrality">PLACEHOLDER FOR DATAFRAME</div>
+        <script>
+            load_dataframe_into("./tables/artist/betweenness-centrality-10-names.html", "dataframe-artist-betweenness-centrality")
+        </script>
+        <div>
+            <small><a class="float-right" href="./tables/artist/betweenness-centrality-100.html" target="_blank">See top 100 artists (with coefficient values)</a></small>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      There is some similarity to the degree centrality, meaning that artists with many connections are often also the ones influencing the flow of the network. There are, however, also some interesting differences though.
+    </p>
+    <p>
+      Lets look at Ted Jensen and Howie Weinberg for example:
+      They are both in higher position for betweenness centrality than for degree centrality.
+      Both of them are American mastering engineers with plenty of Grammy nomination and Gold and Platinum Records.
+    </p>
+    <p>
+      You might not have ever heard of them before, you have probably heard songs they have contributed to.
+      And they are part of the best connected artists that thereby have a certain control over the network.
+    </p>
+  </div>
+
+
+
+
+
+  <hr>
+
+
+  <a id="eigenvector-centrality"></a>
+  <div>
+    <h2>Artist eigenvector centrality</h2>
+    <p>
+      Which nodes have an higher influence over the all network?
+    </p>
+
+    <div class="row">
+      <div class="col-5">
+        <p>
+          Eigenvector centrality evaluates the degree of a node's neighbors, and can therefore be used to better identify nodes with influence over the whole network, and not just those directly connected to it.
+        </p>
+        <p>
+          With the eigenvector, there are apparently a handful of extreme outliers. Also, the eigenvector centrality of the typical node is very low. In fact close to zero.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/artist/eigenvector-centrality/boxplot.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+
+    <div id="carouselArtistsEigenvectorCentrality" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="1"></li>
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="2"></li>
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="3"></li>
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="4"></li>
+        <li data-target="#carouselArtistsEigenvectorCentrality" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-all.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>All artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-performer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-producer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-writer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-custom.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/eigenvector-centrality/graph-artists-labeled.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Top artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtistsEigenvectorCentrality" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtistsEigenvectorCentrality" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <p>Apparently, the artists with high eigenvector degree tend to mingle in on of the more remote areas of the plots.</p>
+    <p>The positions are calculated by the forceatlas algorithm with absolutely no pre-knowledge of this, so apparently the algorithm has a few tricks up is sleeve...</p>
+
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div id="dataframe-artist-eigenvector-centrality">PLACEHOLDER FOR DATAFRAME</div>
+        <script>
+            load_dataframe_into("./tables/artist/eigenvector-centrality-10-names.html", "dataframe-artist-eigenvector-centrality")
+        </script>
+        <div>
+            <small><a class="float-right" href="./tables/artist/eigenvector-centrality-100.html" target="_blank">See top 100 artists (with coefficient values)</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>"So close no matter how far "...indeed Metallica, as a band and with each single component, is apparently having the highest influence in the full network and in the single cathegories.</p>
+      <p>We know that the selection of artists and songs that we uses to create the bipartite network is inevitably biased, so we are aware that these results cannot be generalized, since we would probably expect some huge pop start to have the highest influence overall.</p>
+      <p>In 7th position we have Michael Kamen, who apparently is a composer and a musician with a far reach. Never heard of him?</p>
+      <p>From his wiki page we read:</p>
+      <blockquote class="blockquote" style="margin-left: 5ex; font-size: 85%;">
+        <p class="mb-0">
+          "He was the co-founder and keyboardist of The New York Rock & Roll Orchestra, which was active from 1967. The orchestra was formed by Juilliard School students who had gotten to know each other as participants at Leonard Bernstein's Young People's Concerts."
+        </p>
+      </blockquote>
+      <p>Juilliar is indeed well known,but so far nothing to justify such an high eigencentrality.</p>
+      <p>Wiki continues:</p>
+      <blockquote class="blockquote" style="margin-left: 5ex; font-size: 85%;">
+        <p class="mb-0">
+          "Kamen was known for working with a myriad of rock and heavy bands and soloists, including Pink Floyd , Queen , Metallica , Peter Gabriel and Roger Waters . In addition to conducting, Michael Kamen also played oboe and piano . Michael Kamen has also written film music for Brazil , Highlander , X-Men , Robin Hood - Prince of Thieves , the first three films in the Die Hard 'series, as well as a number of TV series and ballets."
+        </p>
+      </blockquote>
+      <p>He is behind some of the greatest bands of all times and he has made movies too!</p>
+      <p>It is worth mentioning also the only woman who makes the cut as in the performers category: Kate Bush, in 10th position.  From her Wiki we get a clear explanation; in fact she has been inspiring many great (and more recent) artists:</p>
+      <blockquote class="blockquote" style="margin-left: 5ex; font-size: 85%;">
+        <p class="mb-0">
+          Musicians who have cited Bush as an influence include Beverley Craven, Regina Spektor,Ellie Goulding,Charli XCX,Tegan and Sara,k.d. lang,Paula Cole,Kate Nash,Bat for Lashes, Erasure, Alison Goldfrapp of Goldfrapp, Rosalia, Tim Bowness of No-Man, Chris Braide, Kyros,Aisles, Neil Hannon of The Divine Comedy,Darren Hayes,Grimes, and Solange Knowles. Nerina Pallot was inspired to become a songwriter after seeing Bush play "This Woman's Work" on Wogan.Coldplay took inspiration from "Running Up That Hill" to compose their single "Speed of Sound".In 2015, Adele stated that the release of her third studio album was inspired by Bush's 2014 comeback to the stage.
+          In addition to those artists who state that Bush has been a direct influence on their own careers, other artists have been quoted expressing admiration for her work including Tori Amos, Annie Lennox, Bj&oslash;rk,Florence Welch, Little Boots, Elizabeth Fraser of Cocteau Twins,Dido, Sky Ferreira, St. Vincent, Lily Allen, Anohni of Antony and the Johnsons, Big Boi of OutKast, Stevie Nicks, Steven Wilson,Steve Rothery of Marillion, and Andre Matos. According to an unauthorised biography, Courtney Love of Hole listened to Bush among other artists as a teenager.
+        </p>
+      </blockquote>
+    </div>
+  </div>
+
+
+
+
+
+  <hr>
+
+
+  <a id="clustering"></a>
+  <div>
+    <h2>Clustering</h2>
+
+    <p>
+      Does the songs of each artist tend to cluster?  That is, do artist tend to work primarily and only with the same artists?
+    </p>
+
+    <div class="row">
+      <div class="col-5">
+        <p>
+          Looking at the role categories, the lowest scoring role is the primary artists (the ones from the original playlist).
+          While at first, this may seem strange, it could for instance be because these artists have simply made their albums with different cliques in the network.
+        </p>
+        <p>
+          The custom performance artists, have the highest clustering coefficient, but even so, the role still has a 75-percentile close to only 0.45.
+        </p>
+      </div>
+      <div class="col-7">
+        <img src="plots/artist/clustering/boxplot.100dpi.png" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+
+    <p>
+      Overall the average clustering is quite low.
+      This is somewhat to be expected, since songs are typically not made by the same group of performing artists, producers, writers, singers, technicians etc.
+      However, especially among the custom performance artist, there is actually some artists that have songs that tend to cluster.
+      But these are probably artists that have done very few songs, or are related to only group of artists.
+      There are of cause also artists from the other role categories that have songs that tend to cluster a lot more than the average, but except for the writers, this tend to be outliers.
+    </p>
+
+
+    <div id="carouselArtistsClusteringOnSongs" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="1"></li>
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="2"></li>
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="3"></li>
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="4"></li>
+        <li data-target="#carouselArtistsClusteringOnSongs" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="plots/artist/clustering/graph-artists-all.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>All artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/clustering/graph-artists-performer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Featured performers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/clustering/graph-artists-producer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Producers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/clustering/graph-artists-writer.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Writers</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/clustering/graph-artists-custom.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Custom performance artists</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="plots/artist/clustering/graph-artists-labeled.100dpi.png" class="d-block w-100" alt="">
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Top artists</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselArtistsClusteringOnSongs" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselArtistsClusteringOnSongs" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <p>
+      Now, among the performing artists, some the ones that have until now not made much an appearance of themselves, shine.
+      And the primary artists, they generally diminish to only small spots.
+      When compared to the plot showing the degree of the artists (see the previous page), there seem to be a pattern:
+      The performing artists with songs that cluster the most also seem to be the artists with connections.
+    </p>
+
+    <p>
+      As for the overall network, a lot of the top artists (the labeled once) mingle in the second large remote group isolated from the galaxy.
+    </p>
+
+    <div class="row">
+      <div class="col-10 offset-1">
+
+        <div id="dataframe-artist-clustering-on-songs">PLACEHOLDER FOR DATAFRAME</div>
+        <script>
+            load_dataframe_into("./tables/artist/clustering-on-songs-10-names.html", "dataframe-artist-clustering-on-songs")
+        </script>
+        <div>
+            <small><a class="float-right" href="./tables/artist/clustering-on-songs-100.html" target="_blank">See top 100 artists (with coefficient values)</a></small>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Here we find the artists that have a hight clustering coefficient over their songs.
+    </p>
+    <p>
+      Vivian Lesiak is ... who is she? There are various spurious profile and none of them seem to really be the one of a music star. She has an artist profile on genius, where no information is given. Moreover, all the songs related to her are of the same album: Neil Young. She doesn't seem to be the author of these songs though.<br>
+      Same for Christi Bauerlee.
+    </p>
+    <p>
+      Stephen E. Bishop is a guitarist from the 80's who seemed to have worked mainly in the movie industry, that would explain how all the songs related to him are so highly interconnected.
+    </p>
+
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-6 text-left">
+      <a href="network.html" class="btn btn-outline-dark" role="button">Previous page</a>
+    </div>
+    <div class="col-6 text-right">
+      <a href="communities-and-nlp.html" class="btn btn-outline-dark" role="button">Next page</a>
+    </div>
+  </div>
+  <br>
+
+<!-- Content End -->
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script src="./lib/jquery/3.5.1/jquery-3.5.1.slim.min.js"></script>
+<script src="./lib/popper/2.5.4/popper.min.js"></script>
+<script src="./lib/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+<!-- Old style 'hide the navbar' --> 
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            $('.navbar').removeClass("navbar-hide");
+        } else {
+            $('.navbar').addClass("navbar-hide");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
+
+</html>

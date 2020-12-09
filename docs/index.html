@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>Mapping the The Music Galaxy</title>
+    <link rel="stylesheet" href="./lib/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<a id="top"></a>
+
+<!-- NavBar Begin -->
+<nav id="topnavbar" class="navbar navbar-expand-lg   __fixed-top sticky-top navbar-light _bg-light">
+
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        The Music Galaxy
+    </a>
+
+    <div class="collapse navbar-collapse w-100 order-0 order-md-0 multi-collapse2" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="network.html">The Network</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="communities-and-nlp.html">Communities & NLP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="example.html">An Artist Example</a>
+            </li>
+        </ul>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+<!-- NavBar End -->
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+<!-- Content Begin -->
+
+
+
+
+  <div class="float-right">
+    Explainer Notebook: <a href="./explainer.ipynb">Jupyter</a>/<a href="./explainer.html">HTML</a> - <a href="https://github.com/santisantis/Social-Graphs-and-Interactions_2020">Source Code</a>
+  </div>
+
+
+
+
+
+
+  <a id="..."></a>
+  <h1 class="display-4" style="margin-top: 1em; margin-bottom: 1ex;">The Music Galaxy<br><small>- Analysis of music network</small></h1>
+
+  <div class="text-center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iYYRH4apXDo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <p class="lead">
+    World of music industry is vast and deeply interconnected. An ordinary song embarks on an amazing journey from an idea to the final streamable or physical medium. Before you can enjoy your newest release of Ariana Grande or Drake, the song needs to be written both in terms of music composition and lyrics. Then it has to be recorded, which requires a collaborative effort of the primary artist, session musicians or members of the band, as well as the engineer responsible for recording the material. This step is usually done with the help from the record label the artist belongs to. Finally, before the song makes into a single, EP or LP, it needs to fine-tuned by a mastering engineer, who processes the audio single for the best possible audio experience. 
+    </p>
+  <div class="text-center">
+        <figure class="figure">
+          <img class="img-fluid"src="/img/amoeba.jpg" alt="avatar" >
+          <figcaption class="figure-caption">Amoeba store in Hollywood, USA 
+            <!-- <a href="#img_source">Source</a></figcaption> -->
+        </figure>
+  </div>
+
+     <p class="lead">
+      In our work we would like dive deep into this complicated process, by investigating the connections between songs and most important people, such as: primary artists, writers, producers, engineers and performers, who are responsible for delivering our favorite music. We encourage you to follow the suggested order of chapters, starting from the complex and vast network, through the communities of artists, who often work together and finally investigating in detail two artists, who despite being from different decades and genres are still connected through just a couple of artists. 
+    </p> 
+
+
+  <a id="..."></a>
+  <h4 style="margin-top: 1em; margin-bottom: 1ex;" >The Social Network</a></h4>
+  <p>In the first <a href="network.html">chapter</a> we present the overview of the data and the network. We focus on the roles fulfilled by the artist and visualization of the projections of the bipartite network. </p>
+  <p>The chapter gives details into of different graph theory metrics, which allow us to identify the important nodes in our network in term of connectivity or betweenness.</p>
+
+  <a id="..."></a>
+  <h4 style="margin-top: 1em; margin-bottom: 1ex;">Communities & NLP</h4>
+  <p>In this <a href="communities-and-nlp.html">chapter</a> we try to group artist into communities, with two different algorithms and inspect the results.  </p>
+  <p>Lyrics are a great source of Natural Language Processing material. In this we also take a look at the most frequent words and the sentiment of the communities. </p>
+
+  <a id="..."></a>
+  <h4 style="margin-top: 1em; margin-bottom: 1ex;">Artist Example</h4>
+  <p>Finally in the last <a href="example.html">chapter</a>, we take a look at two artists with a high number of songs, but different sentiment and see if they are separated by less then six degrees of separation.</p>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-6 text-left">
+    </div>
+    <div class="col-6 text-right">
+      <a href="network.html" class="btn btn-outline-dark" role="button">Next page</a>
+    </div>
+  </div>
+  <br>
+
+<footer>
+  <h5 id="footnote-label">References</h5>
+    <ol>
+      <li id="img_source"><a href="https://cazuelapublication.files.wordpress.com/2019/03/amoeba-music-hollywood.jpg?w=638&h=423" target="_blank">Image: Amoeba</a></li>
+    </ol>
+  </footer>
+
+
+<!-- Content End -->
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script src="./lib/jquery/3.5.1/jquery-3.5.1.slim.min.js"></script>
+<script src="./lib/popper/2.5.4/popper.min.js"></script>
+<script src="./lib/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+<!-- Old style 'hide the navbar' --> 
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            $('.navbar').removeClass("navbar-hide");
+        } else {
+            $('.navbar').addClass("navbar-hide");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
+
+</html>

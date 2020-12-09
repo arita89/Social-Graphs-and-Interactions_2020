@@ -1,0 +1,686 @@
+<html>
+
+<head>
+    <title>Mapping the The Music Galaxy</title>
+    <link rel="stylesheet" href="./lib/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./scripts.js"></script>
+</head>
+
+<body>
+<a id="top"></a>
+
+<!-- NavBar Begin -->
+<nav id="topnavbar" class="navbar navbar-expand-lg   __fixed-top sticky-top navbar-light _bg-light">
+
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        The Music Galaxy
+    </a>
+
+    <div class="collapse navbar-collapse w-100 order-0 order-md-0 multi-collapse2" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="network.html">The Network</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="communities-and-nlp.html">Communities & NLP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="example.html">An Artist Example</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+<!-- NavBar End -->
+
+
+
+
+<div class="container">
+    <div class="text-right">
+      Explainer Notebook: <a href="./explainer.ipynb">Jupyter</a>/<a href="./explainer.html">HTML</a> - <a href="https://github.com/santisantis/Social-Graphs-and-Interactions_2020">Source Code</a>
+    </div>
+  <!-- Content Begin -->
+
+
+
+
+
+
+  <div class="row">
+  <div class="col-12">
+
+  <a id="communities"></a>
+  <h1 class="display-4" style="margin-top: 1em; margin-bottom: 1ex;">Network Communities</h1>
+    <p>
+      Through community detection we aim to discover some structural correlations between the artists in our network.
+    </p>
+    <p>
+      There are different algorithms that can be used with this purpose, from global ones like Louvain algorithm,to local ones like k-clique algorithm, that allow nodes to be part simultaneously of multiple communities.
+    </p>
+
+  </div>
+</div>
+
+<br />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+  <h2 class="text-left">Communities with Louvain</h2>
+  </div>
+</div>
+
+<br />
+
+<a id="..."></a>
+<div class="col-12">
+  <div class="row">
+    <!--<h3 class="text-left">How these communities look like? </h3>-->
+    <p>
+      Here we give a visualization of the communities identified for the Gcc of our artists Network, where nodes belonging to each community are marked in a different color.
+      Pretty isn't it?
+    </p>
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+      <img src="plots/community/Gcc_artists_Louvain_communities.100dpi.png" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+</div>
+
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+  <!--<h3>Best partition of our Music network with Louvain algorihtm</h3>-->
+  </div>
+  <div class="col-4">
+  <h4> The algorithm</h3>
+      <p class="text-central">
+        Louvain algorithm relies on modularity optimization and evaluates how much more densely connected are the nodes within a community,compared to their density of connection if they were in a random network.
+      </p>
+      <p>
+        The modularity of the GCC of our Artists Network is ca 0.80, which is indicating a strong community structure, with a total of 37 communities.
+      </p>
+  </div>
+  <div class="col-1">
+  </div>
+  <div class="col-7">
+  <h4 class="text-left"> Top artists of some communties</h3>
+      <p class="text-left">
+        ...how they relate to each other? Let's see a couple of interesting examples.
+        <p>
+        We found Bj&ouml;rk & Will Gregory as leading artists in community 3; they are both from the electronic music genre, where Spike is a producer that has worked with plenty of artists.
+        </p>
+        <p>
+        In Community 7 we have "Aretha Franklin & Jerry Wexler & Tom Dowd".
+        All three of them are connected through Atlantic Records label. Wexler, was a music journalist, who became a producer and later a partner at the Atlantic, which under his rule became a major player in the music industry. Dowd was the record engineer for the Atlantic.
+        Finally, Aretha Franklin, has been associated with Atlantic records for 12 years between 1967 and 1979, publishing 15 of her albums with them.
+        </p>
+        <!--<ul>
+        <li>Community 5, Bj&ouml;rk & Will Gregory are both in the electronic music, where Spike is a producer that has worked with plenty of artists.</li>
+        <li>Community 24, Depeche Mode & Martin L. Gore, well Martin is one of the founder of the Depeche Mode, so far so good. they play alternative rock/electronic, which is maybe not that far from the "protopunk" of Iggy Pop</li>
+        <li>Community 23, "Aretha Franklin & Jerry Wexler" , Areta and Jerry Wexler are both into gospel, but what about Aretha and Bob Dylan? They were both signed by John Hammond jr!</li>
+        </ul>-->
+      </p>
+  </div>
+</div>
+
+<hr />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+    <h2 class="text-left">K-cliques </h2>
+    <p>
+      In our Network we include artists of different types, from musicians to producers, therefore we would expect them to parttake in multiple communites.
+      Maybe two singers who share the similar music genre, are in reality also part of two completely distinguishable groups, for example two different record firmas.
+      Louvain partition does not allow to verify that, but another method, the k-clique partition, does.
+    </p>
+  </div>
+</div>
+
+<br />
+
+<a id="..."></a>
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-5">
+      <h4 class="text-left">   How adjacent cliques look? </h3>
+          <div class="col-8">
+            <br />
+            <img src="img/k_cliques.jpg" class ="img-fluid" alt="Responsive image">
+          </div>
+    </div>
+    <div class="col-1">
+      </div>
+    <div class="col-5">
+    <h3 class="text-left"> The algorithm</h3>
+        <p class="text-left">
+          It is based on the Clique Percolation Method (CPM).
+          The scope is to find overlapping communities and the core idea behind it is that intercommunity edges are less likely to form cliques than internal edges of the community.
+        </p>
+        <p>
+          <ul>
+          <li> A k-clique community is given by the union of all k-cliques that can be reached from each other through a series of adjacent k-cliques.</li>
+          <li> Two k-cliques are adjacent when they share k-1 nodes.</li>
+          <li> A k-clique is defined as a complete graph with k vertices.</li>
+          </ul>
+        </p>
+    </div>
+</div>
+
+<br />
+
+<!--<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+    <p class="text-left">
+      In our artists network there are 8161 cliques, with length between 2 and 116, most of which have very small size.
+      For ease of computation and graphs readibility, we choose to select 25 as minimum clique size, which returns 31 communities with 1166 artists.
+    </p>
+  </div>
+</div>-->
+
+<br />
+<!--
+<a id="..."></a>
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+    <p class="text-left">
+      test static
+    </p>
+    <div>
+        <img src="plots/community/Gcc_artists_kclique_communities.100dpi.png" class="img-fluid" alt="Responsive image">
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+    <p class="text-left">
+      test zoom
+    </p>
+    <div>
+        <img src="plots/community/Gcc_artists_kclique_communities.100dpi.png" class="zoom" height="800" width="800">
+    </div>
+  </div>
+</div>-->
+
+<!--<hr /> THIS WORKS BEST
+
+<div class="grid-box">
+    <p class="text-left">
+      test zoom localized
+    </p>
+    <img src="plots/community/Gcc_artists_kclique_communities.100dpi.png" alt="" height="400" width="400"/>
+</div>
+
+<hr />
+<div class="point-zoom">
+    <p class="text-left">
+      point zoom localized
+    </p>
+    <img src="plots/community/Gcc_artists_kclique_communities.100dpi.png" alt="" height="400" width="400"/>
+</div>-->
+<br />
+<br />
+
+<a id="..."></a>
+<div class="row">
+    <div class="col-12">
+    <h2 class="text-left">Our communities in detail </h2>
+    </div>
+    <div class="col-1">
+    </div>
+    <div class="col-4">
+      <br />
+      <br />
+      <p class="text-left">
+        In our artists network there are 8161 cliques, with length between 2 and 116, most of which have very small size.
+        For ease of computation and graphs readibility, we choose to select 25 as minimum clique size, which returns 31 communities with 1166 artists.
+      </p>
+      <p class="text-left">
+        Here the hierarchical structure of the Gcc of the artist network is clearly visible.
+        Moreover, you can easily spot the arists that are part of multiple communities, marked in bright yellow.
+      </p>
+      <p class="text-left">
+        You can also see the biggest names: Keith Richars, Mick Jagger, Paul McCartey...
+      </p>
+    </div>
+    <div class="col-6">
+      <div class="grid-box">
+        <img src="plots/community/Gcc_artists_kclique_communities.100dpi.png" alt="" height="500" width="500"/>
+      </div>
+    </div>
+    <!--<div class="col-1">
+    </div>
+     How to associate a link to an image? -->
+    <div class="col-6 offset-6">
+    <a class="float-left" background-color: "#ffffff"; href="plots/community/Gcc_artists_kclique_communities.100dpi.png" target="_blank"  >Full_size</a>
+    </div>
+</div>
+
+<hr />
+<br />
+<br />
+
+<a id="nlp"></a>
+<div class="row">
+  <div class="col-12">
+  <h2 class="text-left">Sentiment Analysis</h2>
+  <p class="text-left">
+    We have analyzed communities artist by artist, lyric by lyric.
+    We asked ourselves questions like:
+    <ul>
+    <li> How rich is the vocabulary used in this communities? </li>
+    <li> Can we capture some uniqueness in the songs of the artists of each community? </li>
+    <li> Can we spot communities of depressed artists? </li>
+    </ul>
+  </p>
+  </div>
+</div>
+
+<br />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+  <h3 class="text-left">Lexical Complexity</h3>
+  <p class="text-left">
+    We have calculated that the number of unique words across all communities is 23551, small compared to the current english language.
+    Still, let's see how artists compare for orginal content in their lyrics.
+  </p>
+  </div>
+</div>
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+    <div>
+        <img src="plots/community/histrogram-lexical_complexity_of_communities_identified_via_k-clique_algorithm.100dpi.png" class="img-fluid" alt="Responsive image">
+    </div>
+  </div>
+</div>
+
+<hr />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-12">
+  <p class="text-left">
+    The podium is for the community of which Suzie Katayama and Beck are part of, in  which artists re-use only the 75% of the words.
+    Seems much? Well, at the lowest level of lexical complexity we find Keith Richards, part of three communities with only around 10% of unique words!
+  </p>
+  </div>
+</div>
+
+<br />
+
+<a id="..."></a>
+    <p class="text-left">
+    We hand picked the most interesting for you!
+    We are going to look at the most used words, at the general sentiment that drive these communities (is it always love as we expect?) and at how the sentiment is distributed in each lyric.
+    </p>
+<div class="row">
+  <div class="col-4">
+    <br />
+    <p class="text-left">
+    Let's now dig more into some communities...
+    </p>
+    <ul>
+    <li> Community 2: OutKast & Andr&eacute; 3000  </li>
+    <li> Community 4:  Earth, Wind & Fire & Maurice White </li>
+    <li> Community 12: Bj&ouml;rk & Mandy Parnell </li>
+    <li> Community 24: Paul McCartney & Keith Richards  </li>
+    <li> Community 27:  Bj&ouml;rk & & Mark Spike Stent</li>
+    </ul>
+    </p>
+  </div>
+  <div class="col-8" >
+  <!--<h4 class="text-left"> zoom in on some interesting communities! </h3>-->
+  <div id="carousel_communities" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel_communities" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel_communities" data-slide-to="1"></li>
+      <li data-target="#carousel_communities" data-slide-to="2"></li>
+      <li data-target="#carousel_communities" data-slide-to="3"></li>
+      <li data-target="#carousel_communities" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="plots/community/Community_2.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community_2</h5>
+          <!--<p>main artists: OutKast & Andr&eacute; 3000</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/Community_4.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 4</h5>
+          <!--<p> main artists: Earth, Wind & Fire & Maurice White</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/Community_12.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 12</h5>
+          <!--<p> main artists: Bj&ouml;rk & Mandy Parnell/p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/Community_24.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 24</h5>
+          <!--<p>main artists: Paul McCartney & Keith Richards</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/Community_27.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 27</h5>
+          <!--<p>main artists: ?uestlove & Black Thought</p>-->
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carousel_communities" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel_communities" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div><!-- Carousel -->
+  </div>
+</div>
+
+<hr />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-5">
+    <h3 class="text-left">WordClouds </h2>
+    <p class="text-left">
+    In these nice WordClouds you can easily see the most frequent words in each of the selected communities.
+    Here we parsed out for you the words common to all the communities such as "love" or "babe" as well as filler words such as "don't" and "i'm".
+    Top words per selected community:
+    <ul>
+    <li> Community 2 : "git", "nigga"  </li>
+    <li> Community 4 : "dee", "amity" </li>
+    <li> Community 12 : "unconscious", "bj&ouml;rk" </li>
+    <li> Community 24 : 'angie', "pouss&eacute;' </li>
+    <li> Community 27 : "unconscious", "&uacute;mmm" </li>
+    </ul>
+    </p>
+    <p class="text-left">
+    <br />
+    In Community 2: OutKast & Andr&eacute; 3000. We find a lot of slang such as "nigga","niggas","hoes" and so on.
+    Givent that Andr&eacute; 3000 is a rapper, this harsh words makes complete sense in his community.
+    <br />
+    Observing WordCloud Community 12: bj&ouml;rk & Mandy Parnell, we find few words in Icelandic.
+    In fact Bj&ouml;rk is a Icelandic singer, songwriter, record producer, actress, and DJ who works with Mandy Parnell, a British audio mastering engineer.
+  </p>
+
+
+
+  </div>
+  <div class="col-6">
+  <br />
+  <!--<h4 class="text-left"> zoom in on some interesting communities! </h3>-->
+  <div id="carousel_wordclouds" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel_wordclouds" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel_wordclouds" data-slide-to="1"></li>
+      <li data-target="#carousel_wordclouds" data-slide-to="2"></li>
+      <li data-target="#carousel_wordclouds" data-slide-to="3"></li>
+      <li data-target="#carousel_wordclouds" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="plots/community/WordCloud_Community_2.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community_2</h5>
+          <!--<p> most frequent words: "chemistry", "content"</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/WordCloud_Community_4.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 4</h5>
+          <!--<p> most frequent words: "bonita", "bologna"</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/WordCloud_Community_12.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 12</h5>
+          <!--<p>  most frequent words: "gimmie", "ticka"</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/WordCloud_Community_24.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 24</h5>
+          <!--<p>most frequent words: "git", "nigga"</p>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="plots/community/WordCloud_Community_27.100dpi.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Community 27</h3>
+          <!--<p>most frequent words: "unconscious", "bj&ouml;rk"</p>-->
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carousel_wordclouds" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel_wordclouds" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div><!-- Carousel -->
+  </div>
+</div>
+
+<hr />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-7">
+    <div>
+        <img src="plots/community/bar-sentiment_analysis_results_in_5_selected_communities.300dpi.png" class="img-fluid" alt="Responsive image">
+    </div>
+  </div>
+  <div class="col-5">
+    <p class="text-left">
+    Here we have a visualization of the sentiment of the selected communities, on a scale (-1,+1).
+    <!--<ul>
+    <li> Community 2, OutKast & Andr&eacute; 3000; sentiment : -0.9966  </li>
+    <li> Community 4, Earth, Wind & Fire & Maurice White; sentiment : 0.9975 </li>
+    <li> Community 12, Bj&ouml;rk & Mandy Parnell; Final sentiment vader: 0.7814 </li>
+    <li> Community 24, Community 24: Paul McCartney & Keith Richards; Final sentiment vader: -0.9312 </li>
+    <li> Community 27, Bj&ouml;rk & Mark Spike Stent; sentiment : -0.7572 </li>
+    </ul>-->
+    </p>
+    <p class="text-left">
+    They appear to be revolving mainly around positive sentiments, but Paul McCartney & Keith Richards who look pretty neutral.
+    <br />
+    Do you know Earth, Wind & Fire & Maurice White?
+    <br />
+    Earth, Wind & Fire (abbreviated as EW&F or simply EWF) is an American band that has spanned the musical genres of R&B, soul, funk, jazz, disco, pop, dance, Latin, and Afro pop.
+    They have been described as one of the most innovative and commercially successful acts of all time.
+    Rolling Stone called them "innovative, precise yet sensual, calculated yet galvanizing" and declared that the band "changed the sound of black pop".
+    </p>
+  </div>
+</div>
+
+<hr />
+<br />
+
+<a id="..."></a>
+<div class="row">
+  <div class="col-7">
+    <div>
+        <img src="plots/community/bar-Visualization_of_song_sentiment_mix_in_5_selected_communities.300dpi.png" class="img-fluid" alt="Responsive image">
+    </div>
+  </div>
+  <div class="col-5">
+    <p class="text-left">
+    <br />
+    <br />
+    We here counted the positive lyrics, with an overall sentiment above 0.5, the negative ones, with a sentiment less than -0.5 and the neutral ones in the middle.
+    What we can see from the results, is that in all the communities there is a sane mix.
+    That most of the songs are polarized in positive or negative, and that indeed Community "OutKast & Andr&eacute; 3000" has a much higher number of negative lyrics, but it is not a deep black hole of despair.
+    </p>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+
+  <hr>
+
+  <div class="row">
+    <div class="col-6 text-left">
+      <a href="connectivity.html" class="btn btn-outline-dark" role="button">Previous page</a>
+    </div>
+    <div class="col-6 text-right">
+      <a href="example.html" class="btn btn-outline-dark" role="button">Next page</a>
+    </div>
+  </div>
+  <br>
+
+
+  <footer>
+    <h2 id="footnote-label">References</h2>
+      <ol>
+        <li id="img_source"><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Illustration_of_overlapping_communities.jpg/543px-Illustration_of_overlapping_communities.jpg" target = "_blank">Image: Overlapping Communities</a></li>
+      </ol>
+    </footer>
+
+
+
+
+<!-- Content End -->
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script src="./lib/jquery/3.5.1/jquery-3.5.1.slim.min.js"></script>
+<script src="./lib/popper/2.5.4/popper.min.js"></script>
+<script src="./lib/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+<!-- Old style 'hide the navbar' -->
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            $('.navbar').removeClass("navbar-hide");
+        } else {
+            $('.navbar').addClass("navbar-hide");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
+
+</html>
+
+<style>
+
+.carousel-caption {
+    top: auto;
+    bottom: 0;
+    /* background-color: #ffffff;*/
+    /*width:162px;*/
+    height:40px;
+    /*margin-right:-80px;*/
+    font-family:Oswald,sans-serif;
+    font-size:8px;
+    background: rgba(0, 0, 0, 0.1) /* Green background with 30% opacity */
+    /* opacity: 0.5;*/
+}
+
+.zoom {
+  padding: 50px;
+  background-color: white;
+  transition: transform .2s; /* Animation */
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(5); /* (150% zoom)*/
+}
+
+/* Point-zoom Container */
+.point-zoom img {
+  transform-origin: 65% 35%;
+  overflow: hidden;
+  transition: transform 1s,
+  filter .5s ease-out;
+}
+
+/* The Transformation */
+.point-zoom:hover img {
+  transform: scale(5);
+  background: #ffffff
+}
+
+
+.grid-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fff;
+  overflow: hidden;
+  /* transition: all .3s linear;*/
+  width: 500px;
+  height: 500px;
+}
+
+.grid-box:hover img {
+  transform: scale(3);
+  transform-origin: 50% 65%;
+  /*transition: all .2s linear;*/
+  transition: transform 1s,
+  filter .5s ease-out;
+  background: #ffffff
+}
+</style>
